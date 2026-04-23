@@ -16,13 +16,20 @@ dependencies = []
 homepage = "https://github.com/fabriciofx/random-port"
 bug-tracker = "https://github.com/fabriciofx/random-port/issues"
 
+[dependency-groups]
+dev = ["pytest-xdist>=3.8.0"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "-n auto"
 
-[dependency-groups]
-dev = ["pytest-xdist>=3.8.0"]
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["src"]
