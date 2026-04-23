@@ -20,6 +20,9 @@ format:
 dist: check test
 	uv build
 
+upgrade:
+	uv sync --upgrade
+
 clean:
 	rm -rf .venv dist *.egg-info
 	find . -type d -name "*.pyc" -exec rm -r {} +
