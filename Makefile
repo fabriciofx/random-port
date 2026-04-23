@@ -1,22 +1,23 @@
 # SPDX-FileCopyrightText: Copyright (C) 2025-2026 Fabrício Barros Cabral
 # SPDX-License-Identifier: MIT
 
-.PHONY: install tests lint format dist clean
+.PHONY: install test check format dist upgrade clean
 
 install:
 	uv sync
 
-tests:
+test:
 	uv run pytest
 
-lint:
+check:
 	uv run ruff check .
 	uv run ruff format --check .
+	uv run zuban check
 
 format:
 	uv run ruff format .
 
-dist:
+dist: check test
 	uv build
 
 clean:
